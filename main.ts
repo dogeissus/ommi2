@@ -5,7 +5,7 @@ enum RadioMessage {
 }
 function radio2 (a: number) {
     if (a == 1) {
-        radio.sendMessage(RadioMessage.Plus1)
+        radio.sendMessage(RadioMessage.Minus1)
     }
 }
 function pin2 () {
@@ -41,17 +41,18 @@ basic.forever(function () {
     let sent = 0
     while (sent == 0) {
         if (pin1() == 1) {
-            pins.digitalWritePin(DigitalPin.P2, 1)
+            pins.digitalWritePin(DigitalPin.P3, 1)
             pause(100)
-pins.digitalWritePin(DigitalPin.P2, 0)
+            pins.digitalWritePin(DigitalPin.P3, 0)
             led.plot(0, 1)
             sent = 1
         }
     }
     basic.clearScreen()
+    pause(500)
 })
 basic.forever(function () {
-    if (pin3() == 1) {
+    if (pin2() == 1) {
         radio2(1)
     }
 })
