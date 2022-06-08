@@ -11,6 +11,9 @@ function radio2 (a: number) {
         radio.sendMessage(RadioMessage.thing)
     }
 }
+radio.onReceivedMessage(RadioMessage.thing, function () {
+    sensor(1)
+})
 function sensor (d: number) {
     f = x()
     sent = 0
@@ -32,9 +35,6 @@ function pin0 () {
     }
     return 0
 }
-radio.onReceivedMessage(RadioMessage.thing, function () {
-    sensor(1)
-})
 let sent = 0
 let f = 0
 radio.setGroup(69)
