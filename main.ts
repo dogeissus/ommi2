@@ -4,9 +4,6 @@ enum RadioMessage {
     Plus1 = 44153,
     message1 = 49434
 }
-radio.onReceivedMessage(RadioMessage.thing, function () {
-    sensor(1)
-})
 function radio2 (a: number) {
     if (a == 1) {
         radio.sendMessage(RadioMessage.Minus1)
@@ -15,8 +12,10 @@ function radio2 (a: number) {
     }
 }
 function sensor (d: number) {
-    while (sent == 0) {
-        let sent = 0;
+    let sent2 = 0
+    f = x()
+    while (sent2 == 0 && f + 500 > x()) {
+        sent = 0
         if (pin0() == 1) {
             led.plot(0, 1)
             sent = 1
@@ -34,9 +33,13 @@ function pin0 () {
     }
     return 0
 }
+radio.onReceivedMessage(RadioMessage.thing, function () {
+    sensor(1)
+})
 let sent = 0
+let f = 0
 let s = 0
-radio.setGroup(69420)
+radio.setGroup(69)
 basic.forever(function () {
     sensor(0)
 })
