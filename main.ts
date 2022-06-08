@@ -20,12 +20,6 @@ function pin3 () {
     }
     return 0
 }
-function pin1 () {
-    if (pins.digitalReadPin(DigitalPin.P1) == 1) {
-        return 1
-    }
-    return 0
-}
 function x () {
     return input.runningTime()
 }
@@ -40,7 +34,7 @@ radio.setGroup(69420)
 basic.forever(function () {
     let sent = 0
     while (sent == 0) {
-        if (pin1() == 1) {
+        if (pin0() == 1) {
             pins.digitalWritePin(DigitalPin.P3, 1)
             pause(100)
             pins.digitalWritePin(DigitalPin.P3, 0)
