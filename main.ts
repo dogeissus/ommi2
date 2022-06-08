@@ -17,8 +17,8 @@ function sensor (d: number) {
     while (sent == 0 && f + 500 > x()) {
         if (pin0() == 1) {
             led.plot(0, 1)
-            sent = 1
             radio2(d)
+            sent = 1
         }
     }
     basic.clearScreen()
@@ -37,7 +37,6 @@ radio.onReceivedMessage(RadioMessage.thing, function () {
 })
 let sent = 0
 let f = 0
-let s = 0
 radio.setGroup(69)
 basic.forever(function () {
     sensor(0)
