@@ -6,16 +6,15 @@ enum RadioMessage {
 }
 function radio2 (a: number) {
     if (a == 1) {
-        radio.sendMessage(RadioMessage.Plus1)
+        radio.sendMessage(RadioMessage.Minus1)
     } else if (a == 0) {
         radio.sendMessage(RadioMessage.thing)
     }
 }
 function sensor (d: number) {
-    let sent2 = 0
     f = x()
     sent = 0
-    while (sent2 == 0 && f + 500 > x()) {
+    while (sent == 0 && f + 500 > x()) {
         if (pin0() == 1) {
             led.plot(0, 1)
             sent = 1
