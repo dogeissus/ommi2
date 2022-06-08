@@ -16,6 +16,7 @@ function radio2 (a: number) {
 }
 function sensor (d: number) {
     while (sent == 0) {
+        let sent = 0;
         if (pin0() == 1) {
             led.plot(0, 1)
             sent = 1
