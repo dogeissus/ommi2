@@ -6,7 +6,7 @@ enum RadioMessage {
 }
 function radio2 (a: number) {
     if (a == 1) {
-        radio.sendMessage(RadioMessage.Plus1)
+        radio.sendMessage(RadioMessage.Minus1)
         active = 0
     } else if (a == 0) {
         radio.sendMessage(RadioMessage.thing)
@@ -15,6 +15,7 @@ function radio2 (a: number) {
 radio.onReceivedMessage(RadioMessage.thing, function () {
     active = 1
     sent = 0
+    f = x()
     while (sent == 0 && f + 500 > x()) {
         if (_1() == 1) {
             radio2(1)
