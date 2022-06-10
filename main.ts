@@ -6,26 +6,22 @@ enum RadioMessage {
 }
 function radio2 (a: number) {
     if (a == 1) {
-        radio.sendMessage(RadioMessage.Minus1)
+        radio.sendMessage(RadioMessage.Plus1)
+        active = 0
     } else if (a == 0) {
         radio.sendMessage(RadioMessage.thing)
     }
 }
 radio.onReceivedMessage(RadioMessage.thing, function () {
-    sensor(1)
-})
-function sensor (d: number) {
-    f = x()
+    active = 1
     sent = 0
     while (sent == 0 && f + 500 > x()) {
-        if (pin0() == 1) {
-            led.plot(0, 1)
-            radio2(d)
+        if (_1() == 1) {
+            radio2(1)
             sent = 1
         }
     }
-    basic.clearScreen()
-}
+})
 function x () {
     return input.runningTime()
 }
@@ -35,9 +31,26 @@ function pin0 () {
     }
     return 0
 }
-let sent = 0
+function _1 () {
+    f = x()
+    while (f + 500 > x()) {
+        if (pin0() == 1) {
+            led.plot(0, 1)
+            return 1
+        }
+    }
+    basic.clearScreen()
+    return 0
+}
 let f = 0
+let sent = 0
+let active = 0
+active = 1
 radio.setGroup(69)
 basic.forever(function () {
-    sensor(0)
+    if (active == 0) {
+        if (_1() == 1) {
+            radio2(0)
+        }
+    }
 })
