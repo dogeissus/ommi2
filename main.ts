@@ -29,6 +29,8 @@ function sensor () {
         if (pin0() == 1) {
             led.plot(0, 1)
             return 1
+        } else {
+            continue;
         }
     }
     basic.clearScreen()
@@ -46,7 +48,7 @@ function pin0 () {
 let f = 0
 let sent = 0
 let active = 0
-active = 1
+active = 0
 radio.setGroup(69)
 basic.forever(function () {
     if (active == 0) {
