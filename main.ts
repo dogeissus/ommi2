@@ -20,6 +20,8 @@ radio.onReceivedMessage(RadioMessage.thing, function () {
         if (sensor() == 1) {
             radio2(1)
             sent = 1
+        } else {
+            continue;
         }
     }
 })
